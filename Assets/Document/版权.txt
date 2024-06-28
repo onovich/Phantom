@@ -1,0 +1,6 @@
+BGM
+- MainBGM: Infinita08
+    * Taiko Drum Sequence for Looping (The Sacrifice)
+    * https://freesound.org/people/Infinita08/sounds/459561/
+    * CC0
+SE

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1e22956f2334251b773b2a1967c65b, type: 3}
+  m_Name: TM_Map_002
+  m_EditorClassIdentifier: 
+  typeID: 2
+  isBlind: 1
+  mapSize: {x: 10, y: 6}
+  groundHeight: -0.75
+  leftWaveTM: {fileID: 11400000, guid: 7ac4932db31f24466ac47a2179fb5f34, type: 2}
+  rightWaveTM: {fileID: 11400000, guid: 0822c28e474f9448b81777f1001d62b0, type: 2}
+  middlePoint: {x: 0, y: -0.75}
+  leftBound: {x: -4, y: -0.75}
+  rightBound: {x: 4, y: -0.75}
+  cameraConfinerWorldMax: {x: 30, y: 20}
+  cameraConfinerWorldMin: {x: -30, y: -20}

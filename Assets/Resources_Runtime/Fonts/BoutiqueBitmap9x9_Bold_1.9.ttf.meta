@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 2f561b758845a42a991cfd87d45f3d7d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 9
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - BoutiqueBitmap9x9 1.9
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 0b7401e342d934aafbaabe5546da9aba, type: 3}
+  customCharacters: 
+  fontRenderingMode: 2
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
