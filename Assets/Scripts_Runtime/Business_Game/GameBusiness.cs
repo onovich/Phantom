@@ -90,7 +90,8 @@ namespace Phantom {
             var owner = ctx.Role_GetOwner();
             if (status == GameStatus.Gaming) {
                 // Camera   
-                CameraApp.LateTick(ctx.cameraContext, dt);
+                var cameraPos = CameraApp.LateTick(ctx.cameraContext, dt);
+                ctx.mainCamera.transform.position = cameraPos;
 
                 // UI
                 UIApp.GameInfo_RefreshTime(ctx.uiContext, game.fsmComponent.gaming_timer);
@@ -104,13 +105,9 @@ namespace Phantom {
                     var role = roleArr[i];
                     GameRoleDomain.CheckAndUnSpawn(ctx, role);
                 }
-            }
 
-            if (status == GameStatus.Gaming || status == GameStatus.GameOver) {
-                VFXFrameApp.LateTick(ctx.vfxFrameContext, dt);
+                // VFX
                 VFXParticelApp.LateTick(ctx.vfxParticelContext, dt);
-                var cameraPos = CameraApp.LateTick(ctx.cameraContext, dt);
-                ctx.mainCamera.transform.position = cameraPos;
             }
 
             // Game Over

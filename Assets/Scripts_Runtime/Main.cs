@@ -39,8 +39,6 @@ namespace Phantom {
             Transform vfxRoot = GameObject.Find("VFXRoot").transform;
             Transform soundRoot = GameObject.Find("SoundRoot").transform;
 
-            mainCamera.orthographicSize = (Screen.height / 2f) / 32f;
-
             inputEntity = new InputEntity();
 
             loginBusinessContext = new LoginBusinessContext();

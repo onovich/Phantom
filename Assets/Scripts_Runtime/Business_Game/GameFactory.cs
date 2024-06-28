@@ -17,7 +17,7 @@ namespace Phantom {
             var map = GameObject.Instantiate(prefab).GetComponent<MapEntity>();
             map.Ctor();
             map.typeID = typeID;
-            map.mapSize = mapTM.mapSize;
+            map.SetSize(mapTM.mapSize);
             return map;
         }
 
