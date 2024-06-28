@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 2f561b758845a42a991cfd87d45f3d7d, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 42
     m_FontStyle: 0
     m_BestFit: 0
@@ -215,7 +215,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeText: {fileID: 7065243674539223190}
-  hpPrefab: {fileID: 917376033756589878, guid: 965d70173b75f4bcb9679eacb27bdcbc, type: 3}
   hpRoot: {fileID: 7326049675948393224}
 --- !u!1 &8430590474715194120
 GameObject:
