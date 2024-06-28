@@ -21,14 +21,14 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "2757dfd3bb590de80c600d1b8e94f876dda271cb"
+      "hash": "f7f283a54e5e20c7b551d0f1fc75369da1ee6ebd"
     },
     "com.mortise.compass.extension": {
       "version": "ssh://git@github.com/onovich/EasyCompass.git?path=/Assets/com.mortise.compass.extension#main",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "2757dfd3bb590de80c600d1b8e94f876dda271cb"
+      "hash": "9b3944a183f7a2b6373eaa1c7f45d979d7eca56c"
     },
     "com.mortise.swing": {
       "version": "ssh://git@github.com/onovich/Swing.git?path=/Assets/com.mortise.swing#main",
