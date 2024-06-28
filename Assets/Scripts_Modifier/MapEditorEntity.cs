@@ -19,6 +19,7 @@ namespace Phantom.Modifier {
         [SerializeField] Transform obstacleRoot;
         [SerializeField] float gridUnit = 1;
 
+
         [Button("Bake")]
         void Bake() {
             BakeMapInfo();
@@ -35,7 +36,7 @@ namespace Phantom.Modifier {
         }
 
         void BakeObstacle() {
-            PathFindingBakerHelper.Bake(obstacleRoot, -mapTM.mapSize / 2, mapTM.mapSize / 2, gridUnit, 0.0001f, out mapTM.obstacleData, out mapTM.mapWidth);
+            PathFindingBakerHelper.Bake(obstacleRoot, -mapTM.mapSize / 2, mapTM.mapSize / 2, gridUnit, 0.0001f, out mapTM.obstacleData, out mapTM.obstacleDataWidth);
         }
 
         void BakeSpawnPoint() {
@@ -47,7 +48,17 @@ namespace Phantom.Modifier {
             mapTM.ownerSpawnPoint = editor.GetPos();
         }
 
+        void OnDrawGrid() {
+            PathFindingGizmosHelper.OnDrawGrid(gridUnit, -mapTM.mapSize / 2, mapTM.mapSize / 2);
+        }
+
+        void OnDrawObstacle() {
+            PathFindingGizmosHelper.OnDrawObstacle(mapTM.obstacleData, mapTM.obstacleDataWidth, -mapTM.mapSize / 2, gridUnit);
+        }
+
         void OnDrawGizmos() {
+            OnDrawGrid();
+            OnDrawObstacle();
         }
 
     }

@@ -6,7 +6,7 @@ namespace Phantom.Modifier {
     public class SpawnPointEditorEntity : MonoBehaviour {
 
         public void Rename() {
-            this.gameObject.name = $"Spawn Point";
+            this.gameObject.name = $"SpawnPoint";
         }
 
         public Vector2 GetPos() {
