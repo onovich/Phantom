@@ -28,6 +28,7 @@ namespace Phantom {
 
         // Service
         public IDRecordService idRecordService;
+        public PathFindingService pathFindingService;
 
         // Infra
         public TemplateInfraContext templateInfraContext;
@@ -46,6 +47,7 @@ namespace Phantom {
             gameEntity = new GameEntity();
             playerEntity = new PlayerEntity();
             idRecordService = new IDRecordService();
+            pathFindingService = new PathFindingService();
             roleRepo = new RoleRepository();
             blockRepo = new BlockRepository();
             spikeRepo = new SpikeRepository();

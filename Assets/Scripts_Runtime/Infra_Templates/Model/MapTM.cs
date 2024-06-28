@@ -9,6 +9,8 @@ namespace Phantom {
 
         public int typeID;
         public Vector2Int mapSize;
+        public bool[] obstacleData;
+        public int mapWidth;
 
         // Roles
         public Vector2 ownerSpawnPoint;

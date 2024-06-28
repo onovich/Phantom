@@ -1,6 +1,7 @@
 #if UNITY_EDITOR
 using System;
 using System.Collections.Generic;
+using MortiseFrame.Compass.Extension;
 using TriInspector;
 using UnityEditor;
 using UnityEngine;
@@ -15,12 +16,14 @@ namespace Phantom.Modifier {
         [SerializeField] MapTM mapTM;
         [SerializeField] Transform roleGroup;
         [SerializeField] Transform spawnPoint;
+        [SerializeField] Transform obstacleRoot;
+        [SerializeField] float gridUnit = 1;
 
         [Button("Bake")]
         void Bake() {
             BakeMapInfo();
             BakeSpawnPoint();
-
+            BakeObstacle();
             EditorUtility.SetDirty(mapTM);
             AssetDatabase.SaveAssets();
             Debug.Log("Bake Sucess");
@@ -29,6 +32,10 @@ namespace Phantom.Modifier {
         void BakeMapInfo() {
             mapTM.typeID = typeID;
             mapTM.mapSize = mapSize.transform.localScale.RoundToVector2Int();
+        }
+
+        void BakeObstacle() {
+            PathFindingBakerHelper.Bake(obstacleRoot, -mapTM.mapSize / 2, mapTM.mapSize / 2, gridUnit, 0.0001f, out mapTM.obstacleData, out mapTM.mapWidth);
         }
 
         void BakeSpawnPoint() {

@@ -1,0 +1,24 @@
+{
+    "name": "Phantom.Modifier",
+    "rootNamespace": "",
+    "references": [
+        "GUID:84651a3751eca9349aac36a66bba901b",
+        "GUID:9e24947de15b9834991c9d8411ea37cf",
+        "GUID:6ab90af8c2ba87e4bba6df4a563258ff",
+        "GUID:3e1313b9d6abf4d0394d17448e7e610f",
+        "GUID:986c2a652687d674d87d43e6b2a2c7ad",
+        "GUID:9ff28be865fd5419e971f47529488fd3",
+        "GUID:324caed91501a9c47a04ebfd87b68794",
+        "GUID:7be4600869ec09d4ca9a37d1dbfbf1a2",
+        "GUID:603c31fd40e1447f6af75b491911208c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
