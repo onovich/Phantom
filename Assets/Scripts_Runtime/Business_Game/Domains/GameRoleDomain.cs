@@ -45,7 +45,6 @@ namespace Phantom {
 
             if (target.allyStatus == AllyStatus.Player) {
                 target.RoleMod?.PlayHit();
-                target.Move_SetFace(-role.faceDir);
             }
 
             if (target.hp <= 0) {

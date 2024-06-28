@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3433530738972530475}
   - component: {fileID: 2529477388704631507}
-  - component: {fileID: 5554288827522698273}
   m_Layer: 0
   m_Name: Entity_Role
   m_TagString: Untagged
@@ -79,47 +78,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityID: 0
   typeID: 0
+  typeName: 
   allyStatus: 0
-  aiType: 0
   moveSpeed: 0
-  jumpForce: 0
-  g: 0
-  fallingSpeedMax: 0
-  hp: 0
+  faceDir: {x: 0, y: 0}
+  attackDistance: 0
   hpMax: 0
-  isGround: 0
+  hp: 0
   needTearDown: 0
   body: {fileID: 5756515061732775915}
   deadVFXName: 
   deadVFXDuration: 0
-  rb: {fileID: 5554288827522698273}
-  bodyCollider: {fileID: 0}
-  bodyTrigger: {fileID: 0}
-  footTrigger: {fileID: 0}
---- !u!50 &5554288827522698273
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6850806134477372502}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 10
-  m_LinearDrag: 0
-  m_AngularDrag: 0
-  m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 562a60ead75f44713a2bd8b18a779541, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 1
-  m_Constraints: 4
+  rb: {fileID: 0}

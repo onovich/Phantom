@@ -4,7 +4,7 @@ namespace Phantom {
 
     public struct RoleInputComponent {
 
-        public Vector2 skillAxis;
+        public Vector2 moveAxis;
 
     }
 

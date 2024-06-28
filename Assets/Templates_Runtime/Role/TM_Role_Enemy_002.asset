@@ -10,22 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1289747e8e3f8452f897cda1fbd54609, type: 3}
-  m_Name: TM_Role_3_Zatoichi
+  m_Name: TM_Role_Enemy_002
   m_EditorClassIdentifier: 
-  typeID: 3
-  typeName: Zatoichi
-  allyStatus: 1
+  typeID: 2
+  typeName: Enemy
+  allyStatus: 2
   moveSpeed: 6.5
-  attackDistance: 2.8
-  skillTotalFrame: 5
-  swooshFrame: 0
-  slashFrame: 0
-  swooshBreakFrame: 0
-  swooshBreakFrameEnd: 0
-  damageFrame: 1
-  leavingTotalFrame: 0
-  hpMax: 4
-  mod: {fileID: 3927939327069252055, guid: 54a42cebd06a343c0b9ac69266b47a6a, type: 3}
+  attackDistance: 2
+  hpMax: 1
+  mod: {fileID: 3927939327069252055, guid: 284fa247eadf54d0c9d76d8ed8203d81, type: 3}
   deadVFX: {fileID: 1046417506903995189, guid: 4cc547ee9ad754a728a343efb6c300c0, type: 3}
   deadVFXDuration: 2
-  walkVFXInterval: 0

@@ -43,7 +43,6 @@ namespace Phantom {
             role.allyStatus = roleTM.allyStatus;
 
             // Set Attr
-            role.moveSpeed = roleTM.moveSpeed;
             role.attackDistance = roleTM.attackDistance;
             role.hpMax = roleTM.hpMax;
             role.hp = role.hpMax;
@@ -54,9 +53,6 @@ namespace Phantom {
 
             // Set Pos
             role.Pos_SetPos(pos);
-
-            // Set Dir
-            role.Move_SetFace(direction);
 
             // Set Mod
             var modPrefab = roleTM.mod;

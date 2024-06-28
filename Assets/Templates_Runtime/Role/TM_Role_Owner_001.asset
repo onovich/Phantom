@@ -10,22 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1289747e8e3f8452f897cda1fbd54609, type: 3}
-  m_Name: TM_Role_4_Invisible
+  m_Name: TM_Role_Owner_001
   m_EditorClassIdentifier: 
-  typeID: 4
-  typeName: Invisible
-  allyStatus: 2
-  moveSpeed: 1
-  attackDistance: 2
-  skillTotalFrame: 16
-  swooshFrame: 6
-  slashFrame: 10
-  swooshBreakFrame: 6
-  swooshBreakFrameEnd: 10
-  damageFrame: 11
-  leavingTotalFrame: 25
-  hpMax: 1
-  mod: {fileID: 0}
+  typeID: 1
+  typeName: Onovich
+  allyStatus: 1
+  moveSpeed: 6.5
+  attackDistance: 2.8
+  skillTotalFrame: 40
+  slashFrame: 0
+  damageFrame: 1
+  leavingTotalFrame: 0
+  hpMax: 3
+  mod: {fileID: 3927939327069252055, guid: 3cc0f7a37200a448eb809c199c4326aa, type: 3}
   deadVFX: {fileID: 1046417506903995189, guid: 4cc547ee9ad754a728a343efb6c300c0, type: 3}
   deadVFXDuration: 2
-  walkVFXInterval: 1
+  walkVFXInterval: 0
+  stateFrameInterval: 0.083333336

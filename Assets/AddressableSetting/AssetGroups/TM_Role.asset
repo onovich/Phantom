@@ -29,18 +29,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - TM_Role
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4f8ecf1ef239c4ece8b0e491481389c4
-    m_Address: TM_Role_Zatoichi
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - TM_Role
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a29f641ab5b7f4cbb8f4fb461eb3deb0
-    m_Address: TM_Role_Invisible
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - TM_Role
-    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: bcda1c8e574105f42bf63fc8b4423c66, type: 2}
   m_SchemaSet:

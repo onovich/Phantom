@@ -6,7 +6,7 @@ namespace Phantom {
 
     public class InputEntity {
 
-        public Vector2 skillAxis;
+        public Vector2 moveAxis;
 
         InputKeybindingComponent keybindingCom;
 
@@ -17,10 +17,16 @@ namespace Phantom {
         public void ProcessInput(Camera camera, float dt) {
 
             if (keybindingCom.IsKeyDown(InputKeyEnum.MoveLeft)) {
-                skillAxis.x = -1;
+                moveAxis.x = -1;
             }
             if (keybindingCom.IsKeyDown(InputKeyEnum.MoveRight)) {
-                skillAxis.x = 1;
+                moveAxis.x = 1;
+            }
+            if (keybindingCom.IsKeyDown(InputKeyEnum.MoveUp)) {
+                moveAxis.y = 1;
+            }
+            if (keybindingCom.IsKeyDown(InputKeyEnum.MoveDown)) {
+                moveAxis.y = -1;
             }
         }
 
@@ -29,7 +35,7 @@ namespace Phantom {
         }
 
         public void Reset() {
-            skillAxis = Vector2.zero;
+            moveAxis = Vector2.zero;
         }
 
     }

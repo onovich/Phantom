@@ -12,7 +12,6 @@ namespace Phantom {
         public AllyStatus allyStatus;
 
         [Header("Role Attributes")]
-        public float moveSpeed;
         public float attackDistance;
         public int hpMax;
 

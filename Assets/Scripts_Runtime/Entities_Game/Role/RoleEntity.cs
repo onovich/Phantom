@@ -12,8 +12,6 @@ namespace Phantom {
         public AllyStatus allyStatus;
 
         // Attr
-        public float moveSpeed;
-        public Vector2 Velocity => rb.velocity;
         public Vector2 faceDir;
         public float attackDistance;
         public int hpMax;
@@ -39,9 +37,6 @@ namespace Phantom {
 
         public RoleVFXComponent vfxCom;
 
-        // Physics
-        [SerializeField] Rigidbody2D rb;
-
         // Pos
         public Vector2 Pos => Pos_GetPos();
 
@@ -60,45 +55,14 @@ namespace Phantom {
             return transform.position;
         }
 
-        // Attr
-        public float Attr_GetMoveSpeed() {
-            return moveSpeed;
-        }
-
         // Move
         public void Move_ApplyMove(float dt) {
-            float dir = 0f;
-            if (allyStatus == AllyStatus.Player) {
-                dir = inputCom.skillAxis.x;
-            } else if (allyStatus == AllyStatus.Enemy) {
-                dir = faceDir.x;
-                Move_Apply(dir, Attr_GetMoveSpeed(), dt);
-            } else {
-                GLog.LogError($"Move_ApplyMove: unknown allyStatus: {allyStatus}");
+            var axis = inputCom.moveAxis;
+            if (axis == Vector2.zero) {
+                return;
             }
-            Move_SetFace(dir * Vector2.right);
-        }
-
-        public void Move_Stop() {
-            Move_Apply(0, 0, 0);
-        }
-
-        void Move_Apply(float xAxis, float moveSpeed, float fixdt) {
-            var velo = rb.velocity;
-            velo.x = xAxis * moveSpeed;
-            rb.velocity = velo;
-        }
-
-        public void Move_SetFace(Vector2 moveDir) {
-            if (moveDir != Vector2.zero) {
-                faceDir = moveDir;
-            }
-
-            if (moveDir.x != 0) {
-                body.localScale = new Vector3(Mathf.Abs(body.localScale.x) * -Mathf.Sign(moveDir.x),
-                                              body.localScale.y,
-                                              body.localScale.z);
-            }
+            axis.Normalize();
+            transform.position += new Vector3(axis.x, axis.y, 0);
         }
 
         // Color
