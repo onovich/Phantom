@@ -24,6 +24,7 @@ namespace Phantom {
         VFXFrameAppContext vfxFrameAppContext;
         CameraAppContext cameraAppContext;
         SoundAppContext soundAppContext;
+        GLAppContext glAppContext;
 
         bool isLoadedAssets;
         bool isTearDown;
@@ -49,6 +50,7 @@ namespace Phantom {
             vfxFrameAppContext = new VFXFrameAppContext(vfxRoot);
             cameraAppContext = new CameraAppContext(new Vector2(Screen.width, Screen.height));
             soundAppContext = new SoundAppContext(soundRoot);
+            glAppContext = new GLAppContext();
 
             assetsInfraContext = new AssetsInfraContext();
             templateInfraContext = new TemplateInfraContext();
@@ -65,6 +67,7 @@ namespace Phantom {
             gameBusinessContext.vfxFrameContext = vfxFrameAppContext;
             gameBusinessContext.cameraContext = cameraAppContext;
             gameBusinessContext.soundContext = soundAppContext;
+            gameBusinessContext.glContext = glAppContext;
             gameBusinessContext.mainCamera = mainCamera;
 
             cameraAppContext.templateInfraContext = templateInfraContext;

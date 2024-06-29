@@ -22,6 +22,7 @@ namespace Phantom {
         public VFXFrameAppContext vfxFrameContext;
         public CameraAppContext cameraContext;
         public SoundAppContext soundContext;
+        public GLAppContext glContext;
 
         // Camera
         public Camera mainCamera;
