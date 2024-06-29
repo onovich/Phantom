@@ -103,7 +103,7 @@ namespace Phantom {
             GameBusiness.Tick(gameBusinessContext, dt);
 
             UIApp.LateTick(uiAppContext, dt);
-
+ 
         }
 
         void Init() {

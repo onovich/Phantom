@@ -3,6 +3,7 @@
     "com.codewriter.triinspector": "git@github.com:codewriter-packages/Tri-Inspector.git",
     "com.gamearki.gamefunctions": "ssh://git@github.com/GameArki/GameFunctions.git?path=Assets",
     "com.tenon.loom": "ssh://git@github.com/onovich/Loom.git?path=/Assets/com.tenon.loom#main",
+    "com.mortise.silk": "ssh://git@github.com/onovich/Silk.git?path=/Assets/com.mortise.silk#main",
     "com.mortise.compass": "ssh://git@github.com/onovich/EasyCompass.git?path=/Assets/com.mortise.compass#main",
     "com.mortise.compass.extension": "ssh://git@github.com/onovich/EasyCompass.git?path=/Assets/com.mortise.compass.extension#main",
     "com.mortise.swing": "ssh://git@github.com/onovich/Swing.git?path=/Assets/com.mortise.swing#main",

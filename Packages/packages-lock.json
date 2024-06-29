@@ -30,6 +30,13 @@
       "dependencies": {},
       "hash": "9b3944a183f7a2b6373eaa1c7f45d979d7eca56c"
     },
+    "com.mortise.silk": {
+      "version": "ssh://git@github.com/onovich/Silk.git?path=/Assets/com.mortise.silk#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "e616cec104afdda86d2c28095d0fd8944028dfc6"
+    },
     "com.mortise.swing": {
       "version": "ssh://git@github.com/onovich/Swing.git?path=/Assets/com.mortise.swing#main",
       "depth": 0,
