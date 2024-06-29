@@ -18,7 +18,7 @@ namespace Phantom {
 
         public void SetSize(Vector2 size) {
             mapSize = size.RoundToVector2Int();
-            bgSpr.transform.localScale = new Vector3(mapSize.x, mapSize.y, 1);
+            bgSpr.size = new Vector2(mapSize.x, mapSize.y);
             bgSpr.transform.position = new Vector3(-mapSize.x / 2, -mapSize.y / 2, 0);
         }
 
