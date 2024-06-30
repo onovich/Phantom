@@ -106,7 +106,7 @@ namespace Phantom {
             GameBusiness.Tick(gameBusinessContext, dt);
 
             UIApp.LateTick(uiAppContext, dt);
- 
+
         }
 
         void Init() {
@@ -188,6 +188,11 @@ namespace Phantom {
             VFXParticelApp.TearDown(vfxParticelAppContext);
             VFXFrameApp.TearDown(vfxFrameAppContext);
             UIApp.TearDown(uiAppContext);
+            GLApp.TearDown(glAppContext);
+        }
+
+        void OnRenderObject() {
+            GameBusiness.OnRenderObject(gameBusinessContext);
         }
 
         void OnDrawGizmos() {

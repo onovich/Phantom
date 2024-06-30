@@ -18,6 +18,7 @@ namespace Phantom {
             map.Ctor();
             map.typeID = typeID;
             map.SetSize(mapTM.mapSize);
+            map.gridUnit = mapTM.gridUnit;
             return map;
         }
 

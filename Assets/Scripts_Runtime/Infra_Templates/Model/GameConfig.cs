@@ -18,6 +18,9 @@ namespace Phantom {
         // Map
         [Header("Map Config")]
         public int originalMapTypeID;
+        public Material gridMat;
+        public Color gridColor;
+        public float gridThickness;
 
         // Camera
         [Header("DeadZone Config")]

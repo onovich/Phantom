@@ -15,6 +15,9 @@ MonoBehaviour:
   gameResetEnterTime: 1
   ownerRoleTypeID: 1
   originalMapTypeID: 1
+  gridMat: {fileID: 2100000, guid: 8371e540844864e8bb40292bf72c4d43, type: 2}
+  gridColor: {r: 1, g: 1, b: 1, a: 1}
+  gridThickness: 1
   cameraDeadZoneNormalizedSize: {x: 0, y: 0}
   cameraShakeFrequency_roleDamage: 6
   cameraShakeAmplitude_roleDamage: 0.2

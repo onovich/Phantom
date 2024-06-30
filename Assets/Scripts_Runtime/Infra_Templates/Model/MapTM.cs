@@ -9,6 +9,7 @@ namespace Phantom {
 
         public int typeID;
         public Vector2Int mapSize;
+        public float gridUnit;
         public bool[] obstacleData;
         public int obstacleDataWidth;
 

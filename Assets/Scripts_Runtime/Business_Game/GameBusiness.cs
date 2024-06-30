@@ -124,6 +124,14 @@ namespace Phantom {
             }
         }
 
+        public static void OnRenderObject(GameBusinessContext ctx) {
+            var game = ctx.gameEntity;
+            var status = game.fsmComponent.status;
+            if (status == GameStatus.Gaming) {
+                GLApp.Tick(ctx.glContext);
+            }
+        }
+
         public static void OnDrawGizmos(GameBusinessContext ctx, bool drawCameraGizmos) {
             if (ctx == null) {
                 return;

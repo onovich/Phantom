@@ -13,8 +13,8 @@ namespace Phantom {
             ctx.core.RecordCameraInfo(camera);
         }
 
-        public static void DrawLine(GLAppContext ctx, Material mat, Vector3 start, Vector3 end, Color color) {
-            ctx.core.DrawLine(mat, start, end, color);
+        public static void DrawLine(GLAppContext ctx, Material mat, Vector3 start, Vector3 end, Color color, float thickness) {
+            ctx.core.DrawLine(mat, start, end, color, thickness);
         }
 
         public static void DrawRect(GLAppContext ctx, Material mat, Vector2 center, Vector2 size, Color color) {

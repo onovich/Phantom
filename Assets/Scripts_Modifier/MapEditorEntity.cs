@@ -33,6 +33,7 @@ namespace Phantom.Modifier {
         void BakeMapInfo() {
             mapTM.typeID = typeID;
             mapTM.mapSize = mapSize.transform.localScale.RoundToVector2Int();
+            mapTM.gridUnit = gridUnit;
         }
 
         void BakeObstacle() {

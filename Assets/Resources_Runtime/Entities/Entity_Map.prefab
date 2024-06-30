@@ -78,7 +78,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 18, y: 10}
+  m_Size: {x: 0, y: 0}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -131,7 +131,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeID: 0
+  mapSize: {x: 0, y: 0}
   bgSpr: {fileID: 4442014944449560371}
+  gridUnit: 0
   timer: 0
 --- !u!156049354 &6546403515748534231
 Grid:
