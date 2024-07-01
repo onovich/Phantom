@@ -90,8 +90,33 @@ namespace Phantom {
             role.TearDown();
         }
 
-        public static void ApplyMove(GameBusinessContext ctx, RoleEntity role, float dt) {
+        public static void MoveByInput(GameBusinessContext ctx, RoleEntity role, float dt) {
             role.Move_ApplyMove(dt);
+        }
+
+        public static void MoveByPath(GameBusinessContext ctx, RoleEntity role, float dt) {
+            var owner = ctx.Role_GetOwner();
+            if (owner == null) {
+                return;
+            }
+            if (owner.inputCom.moveAxis == Vector2.zero) {
+                role.inputCom.moveAxis = Vector2.zero;
+                return;
+            }
+            if (role.allyStatus != AllyStatus.Enemy) {
+                return;
+            }
+            var path = role.path;
+            var pathLen = role.pathLen;
+            if (pathLen <= 1) {
+                role.inputCom.moveAxis = Vector2.zero;
+                return;
+            }
+
+            var targetGrid = path[1];
+            var targetPos = PathFindingGridUtil.GridToWorld_LD(targetGrid, -ctx.currentMapEntity.mapSize / 2, ctx.currentMapEntity.gridUnit);
+            var dir = (targetPos - role.Pos).normalized;
+            role.inputCom.moveAxis = dir;
         }
 
     }

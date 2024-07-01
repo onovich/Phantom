@@ -34,8 +34,8 @@ namespace Phantom {
             GameRoleDomain.CalculatePathToOwner(ctx, role);
 
             // Move
-            GameRoleDomain.ApplyMove(ctx, role, dt);
-
+            GameRoleDomain.MoveByInput(ctx, role, dt);
+            GameRoleDomain.MoveByPath(ctx, role, dt);
         }
 
         static void FixedTickFSM_Dead(GameBusinessContext ctx, RoleEntity role, float dt) {
