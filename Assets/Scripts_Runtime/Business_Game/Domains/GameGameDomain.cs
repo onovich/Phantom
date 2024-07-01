@@ -93,7 +93,8 @@ namespace Phantom {
             var game = ctx.gameEntity;
             var config = ctx.templateInfraContext.Config_Get();
             if (owner == null || owner.needTearDown) {
-                game.fsmComponent.GameOver_Enter(config.gameResetEnterTime, GameResult.Lose);
+                // game.fsmComponent.GameOver_Enter(config.gameResetEnterTime, GameResult.Lose);
+                RestartGame(ctx);
             }
         }
 

@@ -57,31 +57,26 @@ namespace Phantom {
         }
 
         public static void ApplyDamage(GameBusinessContext ctx, RoleEntity role) {
-            RoleEntity target;
-            if (role.allyStatus == AllyStatus.Enemy) {
-                target = ctx.Role_GetOwner();
-            } else {
-                target = ctx.Role_GetNearestEnemy(role);
+            if (role.allyStatus != AllyStatus.Enemy) {
+                return;
             }
-
-            if (target == null) {
+            RoleEntity owner = ctx.Role_GetOwner();
+            if (owner == null) {
                 return;
             }
 
-            var distSqr = (target.Pos - role.Pos).sqrMagnitude;
+            var distSqr = (owner.Pos - role.Pos).sqrMagnitude;
             if (distSqr > role.attackDistance * role.attackDistance) {
                 return;
             }
 
-            target.hp -= 1;
+            owner.hp -= 1;
             GameCameraDomain.ShakeOnce(ctx);
 
-            if (target.allyStatus == AllyStatus.Player) {
-                target.RoleMod?.PlayHit();
-            }
+            owner.RoleMod?.PlayHit();
 
-            if (target.hp <= 0) {
-                target.FSM_EnterDead();
+            if (owner.hp <= 0) {
+                owner.FSM_EnterDead();
             }
         }
 
