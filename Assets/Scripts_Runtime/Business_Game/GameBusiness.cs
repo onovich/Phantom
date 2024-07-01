@@ -36,7 +36,6 @@ namespace Phantom {
                 }
             }
             LateTick(ctx, dt);
-            inputEntity.Reset();
 
         }
 
@@ -82,6 +81,11 @@ namespace Phantom {
 
             // VFX
             VFXParticelApp.LateTick(ctx.vfxParticelContext, dt);
+
+            // Reset Input
+            var inputEntity = ctx.inputEntity;
+            inputEntity.Reset();
+
         }
 
         static void LateTick(GameBusinessContext ctx, float dt) {
