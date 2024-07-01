@@ -16,6 +16,7 @@ namespace Phantom {
                                               pos);
 
             ctx.roleRepo.Add(role);
+            Debug.Log("RolePos = " + pos);
             return role;
         }
 
@@ -86,7 +87,10 @@ namespace Phantom {
         }
 
         public static void MoveByInput(GameBusinessContext ctx, RoleEntity role, float dt) {
-            role.Move_ApplyMove(dt);
+            role.Move_ApplyMove((pos) => {
+                var grid = PathFindingGridUtil.WorldToGrid(pos, -ctx.currentMapEntity.mapSize / 2, ctx.currentMapEntity.gridUnit);
+                return GameMapDomain.IsWalkable(ctx, (int)grid.x, (int)grid.y);
+            });
         }
 
         public static void MoveByPath(GameBusinessContext ctx, RoleEntity role, float dt) {
@@ -112,6 +116,18 @@ namespace Phantom {
             var targetPos = PathFindingGridUtil.GridToWorld_LD(targetGrid, -ctx.currentMapEntity.mapSize / 2, ctx.currentMapEntity.gridUnit);
             var dir = (targetPos - role.Pos).normalized;
             role.inputCom.moveAxis = dir;
+        }
+
+        public static void ApplyConstraint(GameBusinessContext ctx, RoleEntity role) {
+            var map = ctx.currentMapEntity;
+            var pos = role.Pos;
+            var halfSize = map.mapSize / 2;
+            var gridUnit = map.gridUnit;
+            var min = -halfSize;
+            var max = halfSize - new Vector2(gridUnit, gridUnit);
+            var x = Mathf.Clamp(pos.x, min.x, max.x);
+            var y = Mathf.Clamp(pos.y, min.y, max.y);
+            role.Pos_SetPos(new Vector2(x, y));
         }
 
     }

@@ -37,6 +37,7 @@ namespace Phantom {
             GameRoleDomain.MoveByInput(ctx, role, dt);
             GameRoleDomain.MoveByPath(ctx, role, dt);
             GameRoleDomain.ApplyDamage(ctx, role);
+            GameRoleDomain.ApplyConstraint(ctx, role);
         }
 
         static void FixedTickFSM_Dead(GameBusinessContext ctx, RoleEntity role, float dt) {

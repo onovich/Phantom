@@ -61,12 +61,16 @@ namespace Phantom {
         }
 
         // Move
-        public void Move_ApplyMove(float dt) {
+        public void Move_ApplyMove(Func<Vector2, bool> walkable) {
             var axis = inputCom.moveAxis;
             if (axis == Vector2.zero) {
                 return;
             }
             axis.Normalize();
+            var target = Pos + axis;
+            if (!walkable(target)) {
+                return;
+            }
             transform.position += new Vector3(axis.x, axis.y, 0);
         }
 
