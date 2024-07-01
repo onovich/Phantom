@@ -28,18 +28,18 @@ namespace Phantom {
                 var path = role.path;
                 var pathLen = role.pathLen;
                 if (pathLen > 0) {
-                    DrawPath(ctx, path);
+                    DrawPath(ctx, path, pathLen);
                 }
             }
         }
 
-        static void DrawPath(GameBusinessContext ctx, Vector2[] path) {
+        static void DrawPath(GameBusinessContext ctx, Vector2[] path, int pathLen) {
             var config = ctx.templateInfraContext.Config_Get();
             var mat = config.pathMat;
             var color = config.pathColor;
             var thickness = config.pathThickness;
             var map = ctx.currentMapEntity;
-            for (int i = 0; i < path.Length - 1; i++) {
+            for (int i = 0; i < pathLen - 1; i++) {
                 var startGrid = path[i];
                 var endGrid = path[i + 1];
                 var startPos = PathFindingGridUtil.GridToWorld_Center(startGrid, -map.mapSize / 2, map.gridUnit);
