@@ -16,7 +16,6 @@ namespace Phantom {
                                               pos);
 
             ctx.roleRepo.Add(role);
-            Debug.Log("RolePos = " + pos);
             return role;
         }
 
@@ -96,10 +95,6 @@ namespace Phantom {
         public static void MoveByPath(GameBusinessContext ctx, RoleEntity role, float dt) {
             var owner = ctx.Role_GetOwner();
             if (owner == null) {
-                return;
-            }
-            if (owner.inputCom.moveAxis == Vector2.zero) {
-                role.inputCom.moveAxis = Vector2.zero;
                 return;
             }
             if (role.allyStatus != AllyStatus.Enemy) {

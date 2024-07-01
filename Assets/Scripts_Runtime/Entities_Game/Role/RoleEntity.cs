@@ -103,6 +103,7 @@ namespace Phantom {
 
         // VFX
         public void TearDown() {
+            Array.Clear(path, 0, path.Length);
             vfxCom.Clear();
             roleMod?.TearDown();
             Destroy(this.gameObject);

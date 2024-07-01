@@ -29,13 +29,17 @@ namespace Phantom {
             if (fsm.idle_isEntering) {
                 fsm.idle_isEntering = false;
             }
+            var input = ctx.inputEntity;
+            if (input.moveAxis == Vector2.zero) {
+                return;
+            }
 
             // Calculate Path
             GameRoleDomain.CalculatePathToOwner(ctx, role);
 
             // Move
-            GameRoleDomain.MoveByInput(ctx, role, dt);
             GameRoleDomain.MoveByPath(ctx, role, dt);
+            GameRoleDomain.MoveByInput(ctx, role, dt);
             GameRoleDomain.ApplyDamage(ctx, role);
             GameRoleDomain.ApplyConstraint(ctx, role);
         }

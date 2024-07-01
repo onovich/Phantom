@@ -42,6 +42,12 @@ namespace Phantom {
                                                  enemyPos);
             }
 
+            var len = ctx.roleRepo.TakeAll(out var roleArr);
+            for (int i = 0; i < len; i++) {
+                var role = roleArr[i];
+                GameRoleDomain.CalculatePathToOwner(ctx, role);
+            }
+
             // Camera
             var mainCamera = ctx.mainCamera;
             var cameraID = CameraApp.CreateMainCamera(ctx.cameraContext,

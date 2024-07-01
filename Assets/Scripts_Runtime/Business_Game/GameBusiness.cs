@@ -45,7 +45,21 @@ namespace Phantom {
             var game = ctx.gameEntity;
             var status = game.fsmComponent.status;
             if (status == GameStatus.Gaming) {
-                GameInputDomain.Owner_BakeInput(ctx, ctx.Role_GetOwner());
+                GameInputDomain.Role_BakeInput(ctx, ctx.Role_GetOwner());
+            }
+        }
+
+        public static void ResetInput(GameBusinessContext ctx, float dt) {
+            GameInputDomain.Player_ResetInput(ctx);
+
+            var game = ctx.gameEntity;
+            var status = game.fsmComponent.status;
+            if (status == GameStatus.Gaming) {
+                var len = ctx.roleRepo.TakeAll(out var roleArr);
+                for (int i = 0; i < len; i++) {
+                    var role = roleArr[i];
+                    GameInputDomain.Role_ResetInput(ctx, role);
+                }
             }
         }
 
@@ -73,6 +87,10 @@ namespace Phantom {
                     var role = roleArr[i];
                     GameRoleFSMController.FixedTickFSM(ctx, role, dt);
                 }
+                for (int i = 0; i < roleLen; i++) {
+                    var role = roleArr[i];
+                    GameRoleDomain.CalculatePathToOwner(ctx, role);
+                }
 
                 Physics2D.Simulate(dt);
             }
@@ -83,9 +101,7 @@ namespace Phantom {
             VFXParticelApp.LateTick(ctx.vfxParticelContext, dt);
 
             // Reset Input
-            var inputEntity = ctx.inputEntity;
-            inputEntity.Reset();
-
+            ResetInput(ctx, dt);
         }
 
         static void LateTick(GameBusinessContext ctx, float dt) {
