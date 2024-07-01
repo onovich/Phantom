@@ -1,3 +1,5 @@
+using MortiseFrame.Compass;
+using MortiseFrame.Compass.Extension;
 using UnityEngine;
 
 namespace Phantom {
@@ -10,7 +12,74 @@ namespace Phantom {
             return map;
         }
 
-        public static void DrawAllGrids(GameBusinessContext ctx) {
+        public static void DrawMap(GameBusinessContext ctx) {
+            DrawAllGrids(ctx);
+            DrawAllObstacles(ctx);
+            DrawAllPath(ctx);
+        }
+
+        static void DrawAllPath(GameBusinessContext ctx) {
+            var enemyLen = ctx.roleRepo.TakeAll(out var enemyArr);
+            for (int i = 0; i < enemyLen; i++) {
+                var role = enemyArr[i];
+                if (role.allyStatus != AllyStatus.Enemy) {
+                    continue;
+                }
+                var path = role.path;
+                var pathLen = role.pathLen;
+                if (pathLen > 0) {
+                    DrawPath(ctx, path);
+                    Debug.Log($"Draw Path {role.typeName} {role.entityID}");
+                }
+            }
+        }
+
+        static void DrawPath(GameBusinessContext ctx, Vector2[] path) {
+            var config = ctx.templateInfraContext.Config_Get();
+            var mat = config.pathMat;
+            var color = config.pathColor;
+            var thickness = config.pathThickness;
+            for (int i = 0; i < path.Length - 1; i++) {
+                var start = path[i];
+                var end = path[i + 1];
+                GLApp.DrawLine(ctx.glContext, mat, start, end, color, thickness);
+            }
+        }
+
+        static public bool IsWalkable(GameBusinessContext ctx, int gridX, int gridY) {
+            var map = ctx.currentMapEntity;
+            var walkable = PathFindingMapUtil.IsMapWalkable(map.obstacleData, map.obstacleDataWidth, gridX, gridY);
+            Debug.Log($"IsWalkable {gridX} {gridY} {walkable}, mapWidth {map.obstacleDataWidth}, dataLen {map.obstacleData.Length}");
+            return walkable;
+        }
+
+        static void DrawAllObstacles(GameBusinessContext ctx) {
+            var map = ctx.currentMapEntity;
+            var obstacles = map.obstacleData;
+            var size = map.mapSize;
+            var min = new Vector3(-size.x / 2, -size.y / 2, 0);
+            var unit = map.gridUnit;
+            for (int x = 0; x < size.x; x++) {
+                for (int y = 0; y < size.y; y++) {
+                    if (!obstacles[x + y * size.x]) {
+                        DrawObstacle(ctx, new Vector3(min.x + x * unit, min.y + y * unit, 0));
+                    }
+                }
+            }
+        }
+
+        static void DrawObstacle(GameBusinessContext ctx, Vector3 pos) {
+            var config = ctx.templateInfraContext.Config_Get();
+            var mat = config.obstacleMat;
+            var color = config.obstacleColor;
+            var map = ctx.currentMapEntity;
+            var unit = map.gridUnit;
+            var center = pos + new Vector3(unit / 2, unit / 2, 0);
+            var size = new Vector2(unit, unit);
+            GLApp.DrawRect(ctx.glContext, mat, center, size, color);
+        }
+
+        static void DrawAllGrids(GameBusinessContext ctx) {
             var map = ctx.currentMapEntity;
             var size = map.mapSize;
             var min = new Vector3(-size.x / 2, -size.y / 2, 0);

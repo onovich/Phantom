@@ -22,6 +22,15 @@ namespace Phantom {
         public Color gridColor;
         public float gridThickness;
 
+        [Header("Obstacle Config")]
+        public Material obstacleMat;
+        public Color obstacleColor;
+
+        [Header("Path Config")]
+        public Material pathMat;
+        public Color pathColor;
+        public float pathThickness;
+
         // Camera
         [Header("DeadZone Config")]
         public Vector2 cameraDeadZoneNormalizedSize;

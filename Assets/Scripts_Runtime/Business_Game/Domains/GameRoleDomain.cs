@@ -1,17 +1,19 @@
+using System;
+using MortiseFrame.Compass;
+using MortiseFrame.Compass.Extension;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Phantom {
 
     public static class GameRoleDomain {
 
-        public static RoleEntity Spawn(GameBusinessContext ctx, int typeID, Vector2 pos, Vector2 dir) {
-            var map = ctx.currentMapEntity;
+        public static RoleEntity Spawn(GameBusinessContext ctx, int typeID, Vector2 pos) {
             var role = GameFactory.Role_Spawn(ctx.templateInfraContext,
                                               ctx.assetsInfraContext,
                                               ctx.idRecordService,
                                               typeID,
-                                              pos,
-                                              dir);
+                                              pos);
 
             ctx.roleRepo.Add(role);
             return role;
@@ -21,6 +23,36 @@ namespace Phantom {
             if (role.needTearDown) {
                 UnSpawn(ctx, role);
             }
+        }
+
+        public static void CalculatePathToOwner(GameBusinessContext ctx, RoleEntity role) {
+            var owner = ctx.Role_GetOwner();
+            if (owner == null) {
+                return;
+            }
+
+            if (role.allyStatus == AllyStatus.Player) {
+                return;
+            }
+            var path = role.path;
+            Array.Clear(path, 0, path.Length);
+
+            var map = ctx.currentMapEntity;
+            var startGrid = PathFindingGridUtil.WorldToGrid(role.Pos, -map.mapSize, map.gridUnit);
+            var endGrid = PathFindingGridUtil.WorldToGrid(owner.Pos, -map.mapSize, map.gridUnit);
+            var gridUnit = map.gridUnit;
+            int mapWidth = map.obstacleDataWidth;
+            int mapHeight = PathFindingMapUtil.GetMapHeight(map.obstacleData, mapWidth);
+
+            var pathLen = PathFindingService.FindPath(startGrid,
+                                                      endGrid,
+                                                      (x, y) => GameMapDomain.IsWalkable(ctx, x, y),
+                                                      mapWidth,
+                                                      mapHeight,
+                                                      PathFindingDirection.FourDirections,
+                                                      true,
+                                                      path);
+            role.pathLen = pathLen;
         }
 
         public static void ApplyDamage(GameBusinessContext ctx, RoleEntity role) {

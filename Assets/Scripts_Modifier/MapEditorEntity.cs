@@ -17,6 +17,7 @@ namespace Phantom.Modifier {
         [SerializeField] Transform roleGroup;
         [SerializeField] Transform spawnPoint;
         [SerializeField] Transform obstacleRoot;
+        [SerializeField] Transform enemyRoot;
         [SerializeField] float gridUnit = 1;
 
 
@@ -24,6 +25,7 @@ namespace Phantom.Modifier {
         void Bake() {
             BakeMapInfo();
             BakeSpawnPoint();
+            BakeEnemy();
             BakeObstacle();
             EditorUtility.SetDirty(mapTM);
             AssetDatabase.SaveAssets();
@@ -38,6 +40,22 @@ namespace Phantom.Modifier {
 
         void BakeObstacle() {
             PathFindingBakerHelper.Bake(obstacleRoot, -mapTM.mapSize / 2, mapTM.mapSize / 2, gridUnit, 0.0001f, out mapTM.obstacleData, out mapTM.obstacleDataWidth);
+        }
+
+        void BakeEnemy() {
+            var enemyTMList = new List<RoleTM>();
+            var enemyPosList = new List<Vector2>();
+            foreach (Transform enemy in enemyRoot) {
+                var editor = enemy.GetComponent<EnemyEditorEntity>();
+                if (editor == null) {
+                    Debug.Log("EnemyEditor Not Found");
+                }
+                editor.Rename();
+                enemyPosList.Add(editor.GetPos());
+                enemyTMList.Add(editor.GetRoleTM());
+            }
+            mapTM.enemyArray = enemyTMList.ToArray();
+            mapTM.enemyPosArray = enemyPosList.ToArray();
         }
 
         void BakeSpawnPoint() {

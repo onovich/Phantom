@@ -30,6 +30,9 @@ namespace Phantom {
                 fsm.idle_isEntering = false;
             }
 
+            // Calculate Path
+            GameRoleDomain.CalculatePathToOwner(ctx, role);
+
             // Move
             GameRoleDomain.ApplyMove(ctx, role, dt);
 

@@ -27,10 +27,20 @@ namespace Phantom {
             var spawnPoint = mapTM.ownerSpawnPoint;
             var owner = GameRoleDomain.Spawn(ctx,
                                              config.ownerRoleTypeID,
-                                             spawnPoint,
-                                             Vector2.right);
+                                             spawnPoint);
             player.ownerRoleEntityID = owner.entityID;
             ctx.ownerSpawnPoint = spawnPoint;
+
+            // - Enemy
+            var enemyTMArr = mapTM.enemyArray;
+            var enemyPosArr = mapTM.enemyPosArray;
+            for (int i = 0; i < enemyTMArr.Length; i++) {
+                var enemyTM = enemyTMArr[i];
+                var enemyPos = enemyPosArr[i];
+                var enemy = GameRoleDomain.Spawn(ctx,
+                                                 enemyTM.typeID,
+                                                 enemyPos);
+            }
 
             // Camera
             var mainCamera = ctx.mainCamera;

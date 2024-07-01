@@ -40,10 +40,15 @@ namespace Phantom {
         // Pos
         public Vector2 Pos => Pos_GetPos();
 
+        // Path
+        public Vector2[] path;
+        public int pathLen;
+
         public void Ctor() {
             fsmCom = new RoleFSMComponent();
             inputCom = new RoleInputComponent();
             vfxCom = new RoleVFXComponent();
+            path = new Vector2[100];
         }
 
         // Pos

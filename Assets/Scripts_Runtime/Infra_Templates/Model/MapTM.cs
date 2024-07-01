@@ -15,6 +15,8 @@ namespace Phantom {
 
         // Roles
         public Vector2 ownerSpawnPoint;
+        public Vector2[] enemyPosArray;
+        public RoleTM[] enemyArray;
 
         // Camera
         public Vector2 cameraConfinerWorldMax;

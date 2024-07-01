@@ -10,6 +10,8 @@ namespace Phantom {
         public Vector2Int mapSize;
         [SerializeField] SpriteRenderer bgSpr;
         public float gridUnit;
+        public bool[] obstacleData;
+        public int obstacleDataWidth;
 
         public float timer;
 

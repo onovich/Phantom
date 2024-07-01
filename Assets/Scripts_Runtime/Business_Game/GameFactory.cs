@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Phantom {
@@ -19,6 +20,9 @@ namespace Phantom {
             map.typeID = typeID;
             map.SetSize(mapTM.mapSize);
             map.gridUnit = mapTM.gridUnit;
+            map.obstacleData = new bool[mapTM.obstacleData.Length];
+            Array.Copy(mapTM.obstacleData, map.obstacleData, mapTM.obstacleData.Length);
+            map.obstacleDataWidth = mapTM.obstacleDataWidth;
             return map;
         }
 
@@ -26,8 +30,7 @@ namespace Phantom {
                                  AssetsInfraContext assetsInfraContext,
                                  IDRecordService idRecordService,
                                  int typeID,
-                                 Vector2 pos,
-                                 Vector2 direction) {
+                                 Vector2 pos) {
 
             var has = templateInfraContext.Role_TryGet(typeID, out var roleTM);
             if (!has) {
