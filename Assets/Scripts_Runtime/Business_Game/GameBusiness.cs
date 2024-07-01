@@ -128,6 +128,7 @@ namespace Phantom {
             var game = ctx.gameEntity;
             var status = game.fsmComponent.status;
             if (status == GameStatus.Gaming) {
+                GameMapDomain.DrawAllGrids(ctx);
                 GLApp.Tick(ctx.glContext);
             }
         }

@@ -7,20 +7,19 @@ namespace Phantom {
         public static MapEntity Spawn(GameBusinessContext ctx, int typeID) {
             var map = GameFactory.Map_Spawn(ctx.templateInfraContext, ctx.assetsInfraContext, typeID);
             ctx.currentMapEntity = map;
-            DrawAllGrids(ctx);
             return map;
         }
 
-        static void DrawAllGrids(GameBusinessContext ctx) {
+        public static void DrawAllGrids(GameBusinessContext ctx) {
             var map = ctx.currentMapEntity;
             var size = map.mapSize;
             var min = new Vector3(-size.x / 2, -size.y / 2, 0);
             var max = new Vector3(size.x / 2, size.y / 2, 0);
             var unit = map.gridUnit;
-            for (float x = min.x; x < max.x; x += unit) {
+            for (float x = min.x; x <= max.x; x += unit) {
                 DrawGrid(ctx, new Vector3(x, min.y, 0), new Vector3(x, max.y, 0));
             }
-            for (float y = min.y; y < max.y; y += unit) {
+            for (float y = min.y; y <= max.y; y += unit) {
                 DrawGrid(ctx, new Vector3(min.x, y, 0), new Vector3(max.x, y, 0));
             }
         }
