@@ -38,8 +38,8 @@ namespace Phantom {
             Array.Clear(path, 0, path.Length);
 
             var map = ctx.currentMapEntity;
-            var startGrid = PathFindingGridUtil.WorldToGrid(role.Pos, -map.mapSize, map.gridUnit);
-            var endGrid = PathFindingGridUtil.WorldToGrid(owner.Pos, -map.mapSize, map.gridUnit);
+            var startGrid = PathFindingGridUtil.WorldToGrid(role.Pos, -map.mapSize / 2, map.gridUnit);
+            var endGrid = PathFindingGridUtil.WorldToGrid(owner.Pos, -map.mapSize / 2, map.gridUnit);
             var gridUnit = map.gridUnit;
             int mapWidth = map.obstacleDataWidth;
             int mapHeight = PathFindingMapUtil.GetMapHeight(map.obstacleData, mapWidth);
@@ -53,6 +53,7 @@ namespace Phantom {
                                                       true,
                                                       path);
             role.pathLen = pathLen;
+
         }
 
         public static void ApplyDamage(GameBusinessContext ctx, RoleEntity role) {

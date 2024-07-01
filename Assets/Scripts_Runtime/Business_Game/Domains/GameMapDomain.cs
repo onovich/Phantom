@@ -29,7 +29,6 @@ namespace Phantom {
                 var pathLen = role.pathLen;
                 if (pathLen > 0) {
                     DrawPath(ctx, path);
-                    Debug.Log($"Draw Path {role.typeName} {role.entityID}");
                 }
             }
         }
@@ -39,17 +38,19 @@ namespace Phantom {
             var mat = config.pathMat;
             var color = config.pathColor;
             var thickness = config.pathThickness;
+            var map = ctx.currentMapEntity;
             for (int i = 0; i < path.Length - 1; i++) {
-                var start = path[i];
-                var end = path[i + 1];
-                GLApp.DrawLine(ctx.glContext, mat, start, end, color, thickness);
+                var startGrid = path[i];
+                var endGrid = path[i + 1];
+                var startPos = PathFindingGridUtil.GridToWorld_Center(startGrid, -map.mapSize / 2, map.gridUnit);
+                var endPos = PathFindingGridUtil.GridToWorld_Center(endGrid, -map.mapSize / 2, map.gridUnit);
+                GLApp.DrawLine(ctx.glContext, mat, startPos, endPos, color, thickness);
             }
         }
 
         static public bool IsWalkable(GameBusinessContext ctx, int gridX, int gridY) {
             var map = ctx.currentMapEntity;
             var walkable = PathFindingMapUtil.IsMapWalkable(map.obstacleData, map.obstacleDataWidth, gridX, gridY);
-            Debug.Log($"IsWalkable {gridX} {gridY} {walkable}, mapWidth {map.obstacleDataWidth}, dataLen {map.obstacleData.Length}");
             return walkable;
         }
 
